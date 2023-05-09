@@ -1,6 +1,7 @@
 import React from 'react';
 import { ClientContainer } from '../clientContainer';
 import { Logo } from './logo';
+import { Search } from './search';
 
 export const Navbar = () => {
   return (
@@ -9,6 +10,7 @@ export const Navbar = () => {
         <ClientContainer>
           <div className="flex flex-row justify-between items-center gap-3 md:gap-0">
             <Logo />
+            <Search />
           </div>
         </ClientContainer>
       </div>
