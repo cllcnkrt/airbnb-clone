@@ -1,5 +1,6 @@
 import React from 'react';
 import { ClientContainer } from '../clientContainer';
+import { Logo } from './logo';
 
 export const Navbar = () => {
   return (
@@ -7,7 +8,7 @@ export const Navbar = () => {
       <div className="py-4 border-b-[1px]">
         <ClientContainer>
           <div className="flex flex-row justify-between items-center gap-3 md:gap-0">
-            asdsad
+            <Logo />
           </div>
         </ClientContainer>
       </div>
