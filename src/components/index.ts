@@ -1,2 +1,3 @@
 export { Navbar } from './navbar';
-export { ClientContainer } from '././clientContainer';
+export { ClientContainer } from './clientContainer';
+export { Avatar } from './avatar';
