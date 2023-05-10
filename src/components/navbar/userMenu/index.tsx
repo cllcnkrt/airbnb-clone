@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { Avatar } from '@/components';
-import { useCallback, useState } from 'react';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { MenuItem } from './menuItem';
+import { Avatar } from "@/components";
+import { useCallback, useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { MenuItem } from "./menuItem";
 
 export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

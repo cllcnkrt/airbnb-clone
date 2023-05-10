@@ -1,9 +1,8 @@
-
-import React from 'react';
-import { ClientContainer } from '../clientContainer';
-import { Logo } from './logo';
-import { Search } from './search';
-import { UserMenu } from './userMenu';
+import React from "react";
+import { ClientContainer } from "../clientContainer";
+import { Logo } from "./logo";
+import { Search } from "./search";
+import { UserMenu } from "./userMenu";
 
 export const Navbar = () => {
   return (
