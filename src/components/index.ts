@@ -5,3 +5,4 @@ export { Modal } from "./modal";
 export { Button } from "./button";
 export { RegisterModal } from "./modal/registerModal";
 export { Heading } from "./heading";
+export { Input } from "./input";

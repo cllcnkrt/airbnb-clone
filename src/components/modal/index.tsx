@@ -63,7 +63,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                     z-50 
                     outline-none 
                     focus:outline-none
-                    bg-neutral-800/70 ">
+                    bg-neutral-800/70 "
+            >
                 <div
                     className="
                                 relative
@@ -75,7 +76,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                                 mx-auto
                                 h-full
                                 lg:h-auto
-                                md:h-auto">
+                                md:h-auto"
+                >
                     {/*content*/}
                     <div
                         className={`
@@ -84,7 +86,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                                     h-full
                                     ${showModal ? "translate-y-0" : "translate-y-full"}
                                     ${showModal ? "opacity-100" : "opacity-0"}
-                                    `}>
+                                    `}
+                    >
                         <div
                             className="
                                     translate
@@ -101,7 +104,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                                     bg-white
                                     outline-none
                                     focus:outline-none
-                                    ">
+                                    "
+                        >
                             {/*header*/}
                             <div
                                 className="
@@ -112,7 +116,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                             justify-center
                             relative
                             border-b-[1px]
-                            ">
+                            "
+                            >
                                 <button
                                     className="
                                                 p-1 
@@ -122,7 +127,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                                                 absolute 
                                                 left-9
                                                 "
-                                    onClick={handleClose}>
+                                    onClick={handleClose}
+                                >
                                     <IoMdClose size={18} />
                                 </button>
                                 <div className="text-lg font-semibold">{title}</div>
@@ -138,7 +144,8 @@ export const Modal: React.FC<IModal.IProps> = ({
                                                 items-center
                                                 gap-4
                                                 w-full
-                                                ">
+                                                "
+                                >
                                     {secondaryAction && secondaryActionLabel && (
                                         <Button
                                             disabled={disabled}
