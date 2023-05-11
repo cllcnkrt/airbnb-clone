@@ -1,5 +1,5 @@
 export declare module IClientContainer {
-  interface Props {
-    children?: React.ReactNode;
-  }
+    interface Props {
+        children?: React.ReactNode;
+    }
 }

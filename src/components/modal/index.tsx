@@ -6,16 +6,16 @@ import { IoMdClose } from "react-icons/io";
 import { Button } from "@/components";
 
 export const Modal: React.FC<IModal.IProps> = ({
-    isOpen, 
-    onClose, 
-    onSubmit, 
-    title, 
-    body, 
-    actionLabel, 
-    footer, 
+    isOpen,
+    onClose,
+    onSubmit,
+    title,
+    body,
+    actionLabel,
+    footer,
     disabled,
     secondaryAction,
-    secondaryActionLabel
+    secondaryActionLabel,
 }) => {
     const [showModal, setShowModal] = useState(isOpen);
 

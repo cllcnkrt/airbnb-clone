@@ -1,6 +1,6 @@
 "use client";
 
-import { Modal, Navbar } from "@/components";
+import { Navbar, RegisterModal } from "@/components";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={nunito.className}>
-                <Modal isOpen={true} onClose={() => {}} onSubmit={() => {}} title={"hello"} actionLabel="asdsad"/>
+                <RegisterModal />
                 <Navbar />
                 {children}
             </body>
