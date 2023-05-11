@@ -7,6 +7,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useRegisterModalStore } from "@/hooks";
 import { Modal } from "../";
+import { Heading } from "@/components";
 
 export const RegisterModal: React.FC = () => {
     const {
@@ -40,7 +41,11 @@ export const RegisterModal: React.FC = () => {
         [],
     );
 
-    const bodyContent = <div className="flex flex-col gap-4">sadas</div>;
+    const bodyContent = (
+        <div className="flex flex-col gap-4">
+            <Heading title="Welcome to Airbnb" subtitle="Create an account?" />
+        </div>
+    );
 
     return (
         <Modal
