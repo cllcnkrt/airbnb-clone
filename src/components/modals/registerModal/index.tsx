@@ -71,7 +71,11 @@ export const RegisterModal: React.FC = () => {
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex justify-center items-center gap-2">
                     <div>Already have an account?</div>
-                    <div className="text-neutral-800 cursor-pointer hover:underline">Log in</div>
+                    <div
+                        className="text-neutral-800 cursor-pointer hover:underline"
+                        onClick={registerModalStore.onClose}>
+                        Log in
+                    </div>
                 </div>
             </div>
         </div>
