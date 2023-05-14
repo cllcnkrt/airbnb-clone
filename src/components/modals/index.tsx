@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 
 import { IModal } from "./IModal";
 
-export const Modal: React.FC<IModal.IProps> = ({
+export const Modal: React.FC<IModal.Props> = ({
     isOpen,
     onClose,
     onSubmit,

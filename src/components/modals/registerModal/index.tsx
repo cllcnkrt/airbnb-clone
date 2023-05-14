@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Button, Heading, Input } from "@/components";
 import { useRegisterModalStore } from "@/hooks";
 import axios from "axios";
@@ -27,23 +27,20 @@ export const RegisterModal: React.FC = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const onSubmit: SubmitHandler<FieldValues> = useCallback(
-        async (data) => {
-            setIsLoading(true);
-            await axios
-                .post("http://localhost:4000/api/auth/register", data)
-                .then((res) => {
-                    console.log(res);
-                    registerModalStore.onClose();
-                })
-                .catch((err) => {
-                    toast.error("something went wrong");
-                })
-                .finally(() => setIsLoading(false));
-        },
-
-        []
-    );
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        setIsLoading(true);
+        await axios
+            .post("http://localhost:4000/api/auth/register", data)
+            .then((res) => {
+                console.log(res);
+                registerModalStore.onClose();
+            })
+            .catch((err) => {
+                console.log("err", err);
+                toast.error("something went wrong");
+            })
+            .finally(() => setIsLoading(false));
+    };
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -72,7 +69,8 @@ export const RegisterModal: React.FC = () => {
                     <div>Already have an account?</div>
                     <div
                         className="cursor-pointer text-neutral-800 hover:underline"
-                        onClick={registerModalStore.onClose}>
+                        onClick={registerModalStore.onClose}
+                    >
                         Log in
                     </div>
                 </div>

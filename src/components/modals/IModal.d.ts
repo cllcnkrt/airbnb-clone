@@ -1,5 +1,6 @@
 export declare module IModal {
-    interface IProps {
+    // eslint-disable-next-line no-unused-vars
+    interface Props {
         isOpen?: boolean;
         onClose: () => void;
         onSubmit: () => void;
