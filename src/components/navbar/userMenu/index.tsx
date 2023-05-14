@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Avatar } from "@/components";
-import { useRegisterModalStore } from "@/hooks";
+import { useOnClickOutside, useRegisterModalStore } from "@/hooks";
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { MenuItem } from "./menuItem";
@@ -10,6 +10,9 @@ import { MenuItem } from "./menuItem";
 export const UserMenu = () => {
     const registerModalStore = useRegisterModalStore();
     const [isOpen, setIsOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useOnClickOutside(ref, () => setIsOpen(false));
 
     const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), []);
 
@@ -18,14 +21,12 @@ export const UserMenu = () => {
             <div className="flex flex-row items-center gap-3">
                 <div
                     onClick={() => {}}
-                    className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 md:block"
-                >
+                    className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 md:block">
                     Airbnb your home
                 </div>
                 <div
                     onClick={toggleOpen}
-                    className="border-1[1px] flex cursor-pointer flex-row items-center gap-3 rounded-full border-neutral-200 p-4 transition hover:shadow-md md:px-2 md:py-1"
-                >
+                    className="border-1[1px] flex cursor-pointer flex-row items-center gap-3 rounded-full border-neutral-200 p-4 transition hover:shadow-md md:px-2 md:py-1">
                     <AiOutlineMenu size={16} />
                     <div className="hidden md:block">
                         <Avatar />
