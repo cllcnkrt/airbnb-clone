@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { IModal } from "./IModal";
-import { IoMdClose } from "react-icons/io";
 import { Button } from "@/components";
+import { IoMdClose } from "react-icons/io";
+
+import { IModal } from "./IModal";
 
 export const Modal: React.FC<IModal.IProps> = ({
     isOpen,
@@ -53,37 +54,37 @@ export const Modal: React.FC<IModal.IProps> = ({
         <>
             <div
                 className="
-                    justify-center 
-                    items-center 
-                    flex 
-                    overflow-x-hidden 
-                    overflow-y-auto 
                     fixed 
                     inset-0 
                     z-50 
-                    outline-none 
-                    focus:outline-none
-                    bg-neutral-800/70 "
+                    flex 
+                    items-center 
+                    justify-center 
+                    overflow-y-auto 
+                    overflow-x-hidden 
+                    bg-neutral-800/70 
+                    outline-none
+                    focus:outline-none "
             >
                 <div
                     className="
                                 relative
-                                w-full
-                                md:w-4/6
-                                lg:w-3/6
-                                xl:w-2/5
-                                my-6
                                 mx-auto
+                                my-6
                                 h-full
+                                w-full
+                                md:h-auto
+                                md:w-4/6
                                 lg:h-auto
-                                md:h-auto"
+                                lg:w-3/6
+                                xl:w-2/5"
                 >
                     {/*content*/}
                     <div
                         className={`
                                     translate
-                                    duration-300
                                     h-full
+                                    duration-300
                                     ${showModal ? "translate-y-0" : "translate-y-full"}
                                     ${showModal ? "opacity-100" : "opacity-0"}
                                     `}
@@ -91,41 +92,41 @@ export const Modal: React.FC<IModal.IProps> = ({
                         <div
                             className="
                                     translate
-                                    h-full
-                                    lg:h-auto
-                                    md:h-auto
-                                    border-0
-                                    rounded-lg
-                                    shadow-lg
                                     relative
                                     flex
-                                    flex-col
+                                    h-full
                                     w-full
+                                    flex-col
+                                    rounded-lg
+                                    border-0
                                     bg-white
+                                    shadow-lg
                                     outline-none
                                     focus:outline-none
+                                    md:h-auto
+                                    lg:h-auto
                                     "
                         >
                             {/*header*/}
                             <div
                                 className="
+                            relative
                             flex
                             items-center
-                            p-6
-                            rounded-t
                             justify-center
-                            relative
+                            rounded-t
                             border-b-[1px]
+                            p-6
                             "
                             >
                                 <button
                                     className="
-                                                p-1 
-                                                border-0    
-                                                hover:opacity-70     
-                                                transition 
                                                 absolute 
-                                                left-9
+                                                left-9    
+                                                border-0     
+                                                p-1 
+                                                transition 
+                                                hover:opacity-70
                                                 "
                                     onClick={handleClose}
                                 >
@@ -134,16 +135,16 @@ export const Modal: React.FC<IModal.IProps> = ({
                                 <div className="text-lg font-semibold">{title}</div>
                             </div>
                             {/*body*/}
-                            <div className="relative p-6 flex-auto">{body}</div>
+                            <div className="relative flex-auto p-6">{body}</div>
                             {/*footer*/}
                             <div className="flex flex-col gap-2 p-6">
                                 <div
                                     className="
                                                 flex
+                                                w-full
                                                 flex-row
                                                 items-center
                                                 gap-4
-                                                w-full
                                                 "
                                 >
                                     {secondaryAction && secondaryActionLabel && (

@@ -1,10 +1,11 @@
 "use client";
 
-import { Avatar } from "@/components";
 import { useCallback, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { MenuItem } from "./menuItem";
+import { Avatar } from "@/components";
 import { useRegisterModalStore } from "@/hooks";
+import { AiOutlineMenu } from "react-icons/ai";
+
+import { MenuItem } from "./menuItem";
 
 export const UserMenu = () => {
     const registerModalStore = useRegisterModalStore();
@@ -17,13 +18,13 @@ export const UserMenu = () => {
             <div className="flex flex-row items-center gap-3">
                 <div
                     onClick={() => {}}
-                    className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+                    className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 md:block"
                 >
                     Airbnb your home
                 </div>
                 <div
                     onClick={toggleOpen}
-                    className="p-4 md:py-1 md:px-2 border-1[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+                    className="border-1[1px] flex cursor-pointer flex-row items-center gap-3 rounded-full border-neutral-200 p-4 transition hover:shadow-md md:px-2 md:py-1"
                 >
                     <AiOutlineMenu size={16} />
                     <div className="hidden md:block">
@@ -33,8 +34,8 @@ export const UserMenu = () => {
             </div>
 
             {isOpen && (
-                <div className="absolute rounded-xl shadow-md w-[40vh] md:w-3/4 bg-white overflow-hidde right-0 top-12 text-sm">
-                    <div className="flex flex-col cursor-pointer">
+                <div className="overflow-hidde absolute right-0 top-12 w-[40vh] rounded-xl bg-white text-sm shadow-md md:w-3/4">
+                    <div className="flex cursor-pointer flex-col">
                         <MenuItem onClick={() => {}} label="Login" />
                         <MenuItem onClick={registerModalStore.onOpen} label="Sign Up" />
                     </div>

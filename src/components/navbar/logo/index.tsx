@@ -8,7 +8,7 @@ export const Logo = () => {
 
     return (
         <Image
-            className="cursor-pointer hidden md:block"
+            className="hidden cursor-pointer md:block"
             src="/images/logo.png"
             alt="Logo"
             width={100}
