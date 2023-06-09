@@ -30,7 +30,7 @@ export const RegisterModal: React.FC = () => {
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         setIsLoading(true);
         await axios
-            .post("http://localhost:4000/api/auth/register", data)
+            .post("/api/register", data)
             .then((res) => {
                 console.log(res);
                 registerModalStore.onClose();
@@ -69,8 +69,7 @@ export const RegisterModal: React.FC = () => {
                     <div>Already have an account?</div>
                     <div
                         className="cursor-pointer text-neutral-800 hover:underline"
-                        onClick={registerModalStore.onClose}
-                    >
+                        onClick={registerModalStore.onClose}>
                         Log in
                     </div>
                 </div>
