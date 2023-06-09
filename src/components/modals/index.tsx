@@ -64,8 +64,7 @@ export const Modal: React.FC<IModal.Props> = ({
                     overflow-x-hidden 
                     bg-neutral-800/70 
                     outline-none
-                    focus:outline-none "
-            >
+                    focus:outline-none ">
                 <div
                     className="
                                 relative
@@ -77,8 +76,7 @@ export const Modal: React.FC<IModal.Props> = ({
                                 md:w-4/6
                                 lg:h-auto
                                 lg:w-3/6
-                                xl:w-2/5"
-                >
+                                xl:w-2/5">
                     {/*content*/}
                     <div
                         className={`
@@ -87,8 +85,7 @@ export const Modal: React.FC<IModal.Props> = ({
                                     duration-300
                                     ${showModal ? "translate-y-0" : "translate-y-full"}
                                     ${showModal ? "opacity-100" : "opacity-0"}
-                                    `}
-                    >
+                                    `}>
                         <div
                             className="
                                     translate
@@ -105,8 +102,7 @@ export const Modal: React.FC<IModal.Props> = ({
                                     focus:outline-none
                                     md:h-auto
                                     lg:h-auto
-                                    "
-                        >
+                                    ">
                             {/*header*/}
                             <div
                                 className="
@@ -117,8 +113,7 @@ export const Modal: React.FC<IModal.Props> = ({
                             rounded-t
                             border-b-[1px]
                             p-6
-                            "
-                            >
+                            ">
                                 <button
                                     className="
                                                 absolute 
@@ -128,8 +123,7 @@ export const Modal: React.FC<IModal.Props> = ({
                                                 transition 
                                                 hover:opacity-70
                                                 "
-                                    onClick={handleClose}
-                                >
+                                    onClick={handleClose}>
                                     <IoMdClose size={18} />
                                 </button>
                                 <div className="text-lg font-semibold">{title}</div>
@@ -145,8 +139,7 @@ export const Modal: React.FC<IModal.Props> = ({
                                                 flex-row
                                                 items-center
                                                 gap-4
-                                                "
-                                >
+                                                ">
                                     {secondaryAction && secondaryActionLabel && (
                                         <Button
                                             disabled={disabled}
