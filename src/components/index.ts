@@ -1,5 +1,5 @@
 export { Navbar } from "./navbar";
-export { ClientContainer } from "./clientContainer";
+export { ClientContainer } from "./container";
 export { Avatar } from "./avatar";
 export { Modal } from "./modals";
 export { Button } from "./button";
