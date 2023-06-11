@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button, Heading, Input } from "@/components";
 import { useRegisterModalStore } from "@/hooks";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { AiFillGithub } from "react-icons/ai";
@@ -63,7 +64,7 @@ export const RegisterModal: React.FC = () => {
         <div className="mt-3 flex flex-col gap-4">
             <hr />
             <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => {}} />
-            <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => {}} />
+            <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn("github")} />
             <div className="mt-4 text-center font-light text-neutral-500">
                 <div className="flex items-center justify-center gap-2">
                     <div>Already have an account?</div>
