@@ -32,7 +32,7 @@ export const UserMenu: React.FC<IUserMenu.Props> = ({ currentUser }) => {
                     className="border-1[1px] flex cursor-pointer flex-row items-center gap-3 rounded-full border-neutral-200 p-4 transition hover:shadow-md md:px-2 md:py-1">
                     <AiOutlineMenu size={16} />
                     <div className="hidden md:block">
-                        <Avatar />
+                        <Avatar srcUrl={currentUser?.image} />
                     </div>
                 </div>
             </div>
