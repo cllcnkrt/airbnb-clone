@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Categories } from "../categories";
 import { Container } from "../container";
 import { INavbar } from "./INavbar";
 import { Logo } from "./logo";
@@ -18,6 +19,7 @@ export const Navbar: React.FC<INavbar.Props> = ({ currentUser }) => {
                     </div>
                 </Container>
             </div>
+            <Categories />
         </div>
     );
 };
