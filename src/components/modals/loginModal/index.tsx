@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
-import { Modal } from "../";
+import { Modal } from "../modal";
 
 export const LoginModal: React.FC = () => {
     const router = useRouter();
