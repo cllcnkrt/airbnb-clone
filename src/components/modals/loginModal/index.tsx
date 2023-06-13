@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Heading, Input } from "@/components";
-import { useLoginModalStore } from "@/hooks";
+import { useLoginModalStore, useRegisterModalStore } from "@/hooks";
 import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -24,7 +24,10 @@ export const LoginModal: React.FC = () => {
             password: "",
         },
     });
+
     const loginModalStore = useLoginModalStore();
+    const registerModalStore = useRegisterModalStore();
+
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -47,6 +50,11 @@ export const LoginModal: React.FC = () => {
             }
         });
     };
+
+    const toggle = useCallback(() => {
+        loginModalStore.onClose();
+        registerModalStore.onOpen();
+    }, [loginModalStore, registerModalStore]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -71,9 +79,9 @@ export const LoginModal: React.FC = () => {
             <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn("github")} />
             <div className="mt-4 text-center font-light text-neutral-500">
                 <div className="flex items-center justify-center gap-2">
-                    <div>Already have an account?</div>
-                    <div className="cursor-pointer text-neutral-800 hover:underline" onClick={loginModalStore.onClose}>
-                        Log in
+                    <div>First time using Airbnb?</div>
+                    <div className="cursor-pointer text-neutral-800 hover:underline" onClick={toggle}>
+                        Create an account
                     </div>
                 </div>
             </div>

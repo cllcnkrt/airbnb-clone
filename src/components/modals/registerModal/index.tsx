@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Button, Heading, Input } from "@/components";
-import { useRegisterModalStore } from "@/hooks";
+import { useLoginModalStore, useRegisterModalStore } from "@/hooks";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -25,6 +25,7 @@ export const RegisterModal: React.FC = () => {
         },
     });
     const registerModalStore = useRegisterModalStore();
+    const loginModalStore = useLoginModalStore();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -42,6 +43,12 @@ export const RegisterModal: React.FC = () => {
             })
             .finally(() => setIsLoading(false));
     };
+
+    const toggle = useCallback(() => {
+        console.log("toggle");
+        registerModalStore.onClose();
+        loginModalStore.onOpen();
+    }, [loginModalStore, registerModalStore]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -68,9 +75,7 @@ export const RegisterModal: React.FC = () => {
             <div className="mt-4 text-center font-light text-neutral-500">
                 <div className="flex items-center justify-center gap-2">
                     <div>Already have an account?</div>
-                    <div
-                        className="cursor-pointer text-neutral-800 hover:underline"
-                        onClick={registerModalStore.onClose}>
+                    <div className="cursor-pointer text-neutral-800 hover:underline" onClick={toggle}>
                         Log in
                     </div>
                 </div>
