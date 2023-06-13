@@ -12,18 +12,26 @@ import { MenuItem } from "./menuItem";
 export const UserMenu: React.FC<IUserMenu.Props> = ({ currentUser }) => {
     const registerModalStore = useRegisterModalStore();
     const loginModalStore = useLoginModalStore();
+
     const [isOpen, setIsOpen] = useState(false);
+
     const ref = useRef<HTMLDivElement>(null);
 
     useOnClickOutside(ref, () => setIsOpen(false));
 
     const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), []);
 
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            return loginModalStore.onOpen();
+        }
+    }, [currentUser, loginModalStore]);
+
     return (
         <div className="relative" ref={ref}>
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={() => {}}
+                    onClick={onRent}
                     className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 md:block">
                     Airbnb your home
                 </div>
