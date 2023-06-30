@@ -9,6 +9,7 @@ import { FieldValues, useForm } from "react-hook-form";
 
 import { Modal } from "../modal";
 import { CategoryInput } from "./categoryInput";
+import { CountrySelect } from "./countrySelect";
 
 export const RentModal = () => {
     const rentModalStore = useRentModalStore();
@@ -34,6 +35,7 @@ export const RentModal = () => {
     });
 
     const category = watch("category");
+    const location = watch("location");
 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -88,6 +90,15 @@ export const RentModal = () => {
             </div>
         </div>
     );
+
+    if (step === STEPS.LOCATION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading title="Where is your place located?" subtitle="Help guests find you!" />
+                <CountrySelect value={location} onChange={(value) => setCustomValue("location", value)} />
+            </div>
+        );
+    }
 
     return (
         <Modal
