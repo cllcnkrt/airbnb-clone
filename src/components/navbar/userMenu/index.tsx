@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { Avatar } from "@/components";
-import { useLoginModalStore, useOnClickOutside, useRegisterModalStore } from "@/hooks";
+import { useLoginModalStore, useOnClickOutside, useRegisterModalStore, useRentModalStore } from "@/hooks";
 import { signOut } from "next-auth/react";
 import { AiOutlineMenu } from "react-icons/ai";
 
@@ -12,6 +12,7 @@ import { MenuItem } from "./menuItem";
 export const UserMenu: React.FC<IUserMenu.Props> = ({ currentUser }) => {
     const registerModalStore = useRegisterModalStore();
     const loginModalStore = useLoginModalStore();
+    const rentModalStore = useRentModalStore();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -25,7 +26,8 @@ export const UserMenu: React.FC<IUserMenu.Props> = ({ currentUser }) => {
         if (!currentUser) {
             return loginModalStore.onOpen();
         }
-    }, [currentUser, loginModalStore]);
+        rentModalStore.onOpen();
+    }, [currentUser, loginModalStore, rentModalStore]);
 
     return (
         <div className="relative" ref={ref}>
@@ -54,7 +56,7 @@ export const UserMenu: React.FC<IUserMenu.Props> = ({ currentUser }) => {
                                 <MenuItem label="My favorites" onClick={() => {}} />
                                 <MenuItem label="My reservations" onClick={() => {}} />
                                 <MenuItem label="My properties" onClick={() => {}} />
-                                <MenuItem label="Airbnb your home" onClick={() => {}} />
+                                <MenuItem label="Airbnb your home" onClick={rentModalStore.onOpen} />
                                 <hr />
                                 <MenuItem label="Logout" onClick={() => signOut()} />
                             </>

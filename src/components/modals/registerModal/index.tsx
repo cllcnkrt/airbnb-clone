@@ -45,7 +45,6 @@ export const RegisterModal: React.FC = () => {
     };
 
     const toggle = useCallback(() => {
-        console.log("toggle");
         registerModalStore.onClose();
         loginModalStore.onOpen();
     }, [loginModalStore, registerModalStore]);

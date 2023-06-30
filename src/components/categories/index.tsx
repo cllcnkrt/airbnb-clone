@@ -1,9 +1,9 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
+import { categoriesData } from "@/data";
 
 import { Container } from "../container";
-import { categories } from "./categoriesData";
 import { CategoryItem } from "./categoryItem";
 
 export const Categories = () => {
@@ -19,7 +19,7 @@ export const Categories = () => {
     return (
         <Container>
             <div className="flex flex-row items-center justify-between overflow-x-auto pt-4">
-                {categories.map((categoryItem) => (
+                {categoriesData.map((categoryItem) => (
                     <CategoryItem
                         key={categoryItem.label}
                         label={categoryItem.label}

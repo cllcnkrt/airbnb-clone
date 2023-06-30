@@ -1,5 +1,5 @@
 import { Nunito } from "next/font/google";
-import { LoginModal, Navbar, RegisterModal } from "@/components";
+import { LoginModal, Navbar, RegisterModal, RentModal } from "@/components";
 import { ToasterProvider } from "@/providers";
 
 import "./globals.css";
@@ -18,6 +18,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <html lang="en">
             <body className={nunito.className}>
                 <ToasterProvider />
+                <RentModal />
                 <LoginModal />
                 <RegisterModal />
                 <Navbar currentUser={currentUser} />
