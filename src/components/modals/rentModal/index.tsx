@@ -5,11 +5,43 @@ import { Heading } from "@/components";
 import { categoriesData } from "@/data";
 import { STEPS } from "@/enums";
 import { useRentModalStore } from "@/hooks";
+import { FieldValues, useForm } from "react-hook-form";
 
 import { Modal } from "../modal";
+import { CategoryInput } from "./categoryInput";
 
 export const RentModal = () => {
     const rentModalStore = useRentModalStore();
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        formState: { errors },
+        reset,
+    } = useForm<FieldValues>({
+        defaultValues: {
+            category: "",
+            location: null,
+            guestCount: 1,
+            roomCount: 1,
+            bathroomCount: 1,
+            imageSrc: "",
+            price: 1,
+            title: "",
+            description: "",
+        },
+    });
+
+    const category = watch("category");
+
+    const setCustomValue = (id: string, value: any) => {
+        setValue(id, value, {
+            shouldDirty: true,
+            shouldTouch: true,
+            shouldValidate: true,
+        });
+    };
 
     const [step, setStep] = useState(STEPS.CATEGORY);
 
@@ -43,7 +75,14 @@ export const RentModal = () => {
             <div className="grid max-h-[50vh] grid-cols-1 gap-3 overflow-y-auto md:grid-cols-2">
                 {categoriesData.map((item) => (
                     <div key={item.label} className="col-span-1">
-                        {item.label}
+                        <CategoryInput
+                            icon={item.icon}
+                            label={item.label}
+                            selected={category === item.label}
+                            onClick={(category) => {
+                                setCustomValue("category", category);
+                            }}
+                        />
                     </div>
                 ))}
             </div>
