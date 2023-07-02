@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import { Heading } from "@/components";
 import { categoriesData } from "@/data";
 import { STEPS } from "@/enums";
@@ -36,6 +37,14 @@ export const RentModal = () => {
 
     const category = watch("category");
     const location = watch("location");
+
+    const Map = useMemo(
+        () =>
+            dynamic(() => import("@/components/map"), {
+                ssr: false,
+            }),
+        [location]
+    );
 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -96,6 +105,7 @@ export const RentModal = () => {
             <div className="flex flex-col gap-8">
                 <Heading title="Where is your place located?" subtitle="Help guests find you!" />
                 <CountrySelect value={location} onChange={(value) => setCustomValue("location", value)} />
+                <Map center={location?.latlng} />
             </div>
         );
     }

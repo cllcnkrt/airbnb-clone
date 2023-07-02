@@ -7,3 +7,4 @@ export { Heading } from "./heading";
 export { Input } from "./input";
 export { Categories } from "./categories";
 export { RegisterModal, RentModal, LoginModal } from "./modals";
+export { Map } from "./map";
