@@ -1,6 +1,5 @@
 "use client";
 
-import { useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
@@ -10,7 +9,7 @@ export const CategoryItem: React.FC<ICategoryItem.Props> = ({ label, icon: Icon,
     const router = useRouter();
     const params = useSearchParams();
 
-    const handleClick = useCallback(() => {
+    const handleClick = () => {
         let currentQuery = {};
         if (params) {
             currentQuery = qs.parse(params.toString());
@@ -34,7 +33,7 @@ export const CategoryItem: React.FC<ICategoryItem.Props> = ({ label, icon: Icon,
         );
 
         router.push(url);
-    }, [label, router, params]);
+    };
 
     return (
         <div

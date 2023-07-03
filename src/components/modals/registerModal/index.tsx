@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Button, Heading, Input } from "@/components";
 import { useLoginModalStore, useRegisterModalStore } from "@/hooks";
 import axios from "axios";
@@ -44,10 +44,10 @@ export const RegisterModal: React.FC = () => {
             .finally(() => setIsLoading(false));
     };
 
-    const toggle = useCallback(() => {
+    const toggle = () => {
         registerModalStore.onClose();
         loginModalStore.onOpen();
-    }, [loginModalStore, registerModalStore]);
+    };
 
     const bodyContent = (
         <div className="flex flex-col gap-4">

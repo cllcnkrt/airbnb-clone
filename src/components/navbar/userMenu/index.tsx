@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Avatar } from "@/components";
 import { useLoginModalStore, useOnClickOutside, useRegisterModalStore, useRentModalStore } from "@/hooks";
 import { signOut } from "next-auth/react";
@@ -20,14 +20,14 @@ export const UserMenu: React.FC<IUserMenu.Props> = ({ currentUser }) => {
 
     useOnClickOutside(ref, () => setIsOpen(false));
 
-    const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), []);
+    const toggleOpen = () => setIsOpen((prev) => !prev);
 
-    const onRent = useCallback(() => {
+    const onRent = () => {
         if (!currentUser) {
             return loginModalStore.onOpen();
         }
         rentModalStore.onOpen();
-    }, [currentUser, loginModalStore, rentModalStore]);
+    };
 
     return (
         <div className="relative" ref={ref}>

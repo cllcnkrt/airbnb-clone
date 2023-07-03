@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Heading, Input } from "@/components";
 import { useLoginModalStore, useRegisterModalStore } from "@/hooks";
@@ -51,10 +51,10 @@ export const LoginModal: React.FC = () => {
         });
     };
 
-    const toggle = useCallback(() => {
+    const toggle = () => {
         loginModalStore.onClose();
         registerModalStore.onOpen();
-    }, [loginModalStore, registerModalStore]);
+    };
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
