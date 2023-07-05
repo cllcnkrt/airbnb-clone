@@ -2,11 +2,14 @@
 
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { Heading, Input } from "@/components";
 import { categoriesData } from "@/data";
 import { STEPS } from "@/enums";
 import { useRentModalStore } from "@/hooks";
-import { FieldValues, useForm } from "react-hook-form";
+import axios from "axios";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import { Modal } from "../modal";
 import { CategoryInput } from "./categoryInput";
@@ -16,8 +19,9 @@ import { ImageUpload } from "./imageUpload";
 
 export const RentModal = () => {
     const rentModalStore = useRentModalStore();
-    const [step, setStep] = useState(STEPS.CATEGORY);
-    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+    const [step, setStep] = useState<number>(STEPS.CATEGORY);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const {
         register,
@@ -69,6 +73,30 @@ export const RentModal = () => {
 
     const onNext = () => {
         setStep((prev) => prev + 1);
+    };
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        if (step !== STEPS.PRICE) {
+            return onNext();
+        }
+
+        setIsLoading(true);
+
+        axios
+            .post("/api/listings", data)
+            .then(() => {
+                toast.success("Listing Created!");
+                router.refresh();
+                reset();
+                setStep(STEPS.CATEGORY);
+                rentModalStore.onClose();
+            })
+            .catch(() => {
+                toast.error("Something went wrong");
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     const actionLabel = useMemo(() => {
@@ -198,7 +226,7 @@ export const RentModal = () => {
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-            onSubmit={onNext}
+            onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
         />
     );
