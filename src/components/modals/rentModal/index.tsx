@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { Heading } from "@/components";
+import { Heading, Input } from "@/components";
 import { categoriesData } from "@/data";
 import { STEPS } from "@/enums";
 import { useRentModalStore } from "@/hooks";
@@ -16,6 +16,9 @@ import { ImageUpload } from "./imageUpload";
 
 export const RentModal = () => {
     const rentModalStore = useRentModalStore();
+    const [step, setStep] = useState(STEPS.CATEGORY);
+    const [isLoading, setIsLoading] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -59,8 +62,6 @@ export const RentModal = () => {
             shouldValidate: true,
         });
     };
-
-    const [step, setStep] = useState(STEPS.CATEGORY);
 
     const onBack = () => {
         setStep((prev) => prev - 1);
@@ -149,6 +150,24 @@ export const RentModal = () => {
             <div className="flex flex-col gap-8">
                 <Heading title="Add a photo of your place" subtitle="Show guests what your place looks like!" />
                 <ImageUpload onChange={(value) => setCustomValue("imageSrc", value)} value={imageSrc} />
+            </div>
+        );
+    }
+
+    if (step === STEPS.DESCRIPTION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading title="How would you describe your place?" subtitle="Short and sweet works best!" />
+                <Input id="title" label="Title" disabled={isLoading} register={register} errors={errors} required />
+                <hr />
+                <Input
+                    id="description"
+                    label="Description"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
             </div>
         );
     }
