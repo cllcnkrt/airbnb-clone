@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <body className={nunito.className}>
                 <ToasterProvider />
                 <RentModal />
-                <LoginModal />
+                {/* <LoginModal /> */}
                 <RegisterModal />
                 <Navbar currentUser={currentUser} />
                 {children}
